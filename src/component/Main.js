@@ -6,8 +6,6 @@ const Main = ({
   onEditProfileOpen,
   onAddCardOpen,
   cards,
-  onDeleteCard,
-  onCardLike,
   onCardOpen,
 }) => {
   return (
@@ -48,8 +46,6 @@ const Main = ({
               key={card._id}
               card={card}
               user={userInfo}
-              onDeleteCard={onDeleteCard}
-              onCardLike={onCardLike}
               onCardOpen={onCardOpen}
             />
           ))}

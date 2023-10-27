@@ -1,17 +1,12 @@
 import React from "react";
 
-function Card({ card, user, onDeleteCard, onCardLike, onCardOpen }) {
+function Card({ card, user, onCardOpen }) {
   const { likes, link, name, owner, _id } = card;
-  // console.log("----");
-  // console.log(likes);
-  // console.log(user);
-  // console.log("----");
 
   const hasLike = () => {
     return likes.some((like) => like._id === user._id);
   };
 
-  //gallery__like-button_active
   return (
     <div className="gallery__block">
       <img
@@ -26,7 +21,6 @@ function Card({ card, user, onDeleteCard, onCardLike, onCardOpen }) {
         <button
           className="gallery__block-button-delete"
           aria-label="Кнопка удаления карточки"
-          onClick={() => onDeleteCard(_id)}
         ></button>
       )}
       <div className="gallery__info">
@@ -38,7 +32,6 @@ function Card({ card, user, onDeleteCard, onCardLike, onCardOpen }) {
             }`}
             type="button"
             aria-label="Кнопка лайка карточки"
-            onClick={() => onCardLike(card)}
           ></button>
           <span className="gallery__like-counter" aria-label={likes.length}>
             {likes.length}

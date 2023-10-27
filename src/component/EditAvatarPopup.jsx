@@ -21,7 +21,7 @@ const EditAvatarPopup = ({ isOpen, onClose, handleSubmit, isLoading }) => {
       onClose={onClose}
       onSubmit={submitForm}
       name={"edit-avatar"}
-      title={"Renew avatar"}
+      title={"Обновить аватар"}
       isSubmitDisabled={isValid}
       submitText={isLoading ? "Loading" : "Сохранить"}
     >

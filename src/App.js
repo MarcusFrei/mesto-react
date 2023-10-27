@@ -79,89 +79,6 @@ function App() {
     setIsCardPopupOpened(false);
   }
 
-  function updateAvatar(obj) {
-    console.log("api avatar");
-    setIsLoading(true);
-    api
-      .updateAvatar(obj)
-      .then((data) => {
-        setUserInfo(data);
-        closeAllPopups();
-      })
-      .catch((e) => console.log(e))
-      .finally(() => setIsLoading(false));
-  }
-
-  function addCard(obj) {
-    console.log(obj);
-    setIsLoading(true);
-    api
-      .sendNewCard(obj)
-      .then((data) => {
-        setCards([data, ...cards]);
-        closeAllPopups();
-      })
-      .catch((e) => console.log(e))
-      .finally(() => setIsLoading(false));
-  }
-
-  function updateUserInfo(obj) {
-    console.log("api profile");
-    setIsLoading(true);
-    api
-      .editProfile(obj)
-      .then((data) => {
-        setUserInfo(data);
-        closeAllPopups();
-      })
-      .catch((e) => console.log(e))
-      .finally(() => setIsLoading(false));
-  }
-
-  function deleteCard(id) {
-    console.log(id);
-    setIsLoading(true);
-    api
-      .deleteCard(id)
-      .then((data) => {
-        console.log(data);
-        const tempCopy = cards.filter((card) => card._id !== id);
-        setCards(tempCopy);
-
-        closeAllPopups();
-      })
-      .catch((e) => console.log(e))
-      .finally(() => setIsLoading(false));
-  }
-
-  function setLike(card) {
-    const isCardLiked = card.likes.some((elem) => elem._id === userInfo._id);
-
-    if (!isCardLiked) {
-      api
-        .setLike(card._id)
-        .then((data) => {
-          console.log(data);
-          const tempCopy = cards.map((card) =>
-            card._id === data._id ? data : card
-          );
-          setCards(tempCopy);
-        })
-        .catch((e) => console.log(e));
-    } else {
-      api
-        .deleteLike(card._id)
-        .then((data) => {
-          console.log(data);
-          const tempCopy = cards.map((card) =>
-            card._id === data._id ? data : card
-          );
-          setCards(tempCopy);
-        })
-        .catch((e) => console.log(e));
-    }
-  }
-
   return (
     <div>
       <ImagePopup
@@ -171,14 +88,12 @@ function App() {
       />
 
       <EditAvatarPopup
-        handleSubmit={updateAvatar}
         isOpen={isEditAvatarOpened}
         onClose={closeAllPopups}
         isLoading={isLoading}
       />
 
       <EditUserInfo
-        handleSubmit={updateUserInfo}
         isOpen={isEditProfileOpened}
         onClose={closeAllPopups}
         isLoading={isLoading}
@@ -186,7 +101,6 @@ function App() {
       />
 
       <AddCardPopup
-        handleSubmit={addCard}
         isOpen={isAddCardOpened}
         onClose={closeAllPopups}
         isLoading={isLoading}
@@ -198,8 +112,6 @@ function App() {
         onEditAvatarOpen={handleEditAvatarClick}
         onEditProfileOpen={handleEditProfileClick}
         onAddCardOpen={handleAddCardClick}
-        onDeleteCard={deleteCard}
-        onCardLike={setLike}
         onCardOpen={handleOpenCardClick}
         cards={cards}
       />
