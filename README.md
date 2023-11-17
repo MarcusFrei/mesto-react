@@ -17,6 +17,7 @@
 **Figma**
 
 * Ссылка на макет в Figma (https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=50160%3A229&mode=dev)
+* https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12?node-id=4453%3A23&mode=dev
 
 **GitHub:**
 
